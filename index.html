@@ -13,12 +13,18 @@
             }
 
             function playRound(playerSelection, computerSelection) {
-
+                if (playerSelection == "Rock" && computerSelection == "Scissors") {
+                    return "You win! " + playerSelection + " beats " + computerSelection;
+                }
             }
 
+            // Gets input from user and returns a string making the first letter capital
             function playerAction() {
                 playerInput = prompt("Choose between 'Rock', 'Paper', 'Scissors': ");
-                return playerInput;
+                playerLowCaps = playerInput.toLowerCase();
+                playerCaps = (playerLowCaps.charAt(0)).toUpperCase();
+                newInput = playerLowCaps.replace(playerLowCaps.charAt(0), playerCaps);
+                return newInput;
             }
         </script>
     </body>
