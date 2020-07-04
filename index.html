@@ -6,16 +6,14 @@
     </head>
     <body>
         <script>
+            let playerScore = 0
+            let computerScore = 0;
+
+            // Outputs a random choice out of the 3 actions available in the list
             function computerPlay() {
                 const action = ["Rock", "Paper", "Scissors"];
                 const randomAction = action[Math.floor(Math.random() * action.length)];
                 return randomAction;
-            }
-
-            function playRound(playerSelection, computerSelection) {
-                if (playerSelection == "Rock" && computerSelection == "Scissors") {
-                    return "You win! " + playerSelection + " beats " + computerSelection;
-                }
             }
 
             // Gets input from user and returns a string making the first letter capital
@@ -26,6 +24,74 @@
                 newInput = playerLowCaps.replace(playerLowCaps.charAt(0), playerCaps);
                 return newInput;
             }
+
+            // Handles the logic for a single round i.e. which action beats another action
+            function playRound(playerSelection, computerSelection) {
+
+                // All combinations where Player chooses "Rock"
+                if (playerSelection == "Rock" && computerSelection == "Scissors") {
+                    playerScore++;
+                    return "You win! " + playerSelection + " beats " + computerSelection;
+                }
+
+                else if (playerSelection == "Rock" && computerSelection == "Paper") {
+                    computerScore++;
+                    return "You Lose! " + computerSelection + " beats " + playerSelection;
+                }
+                
+                else if (playerSelection == "Rock" && computerSelection == "Rock") {
+                    return "it's a tie! Try again";
+                }
+
+                // All combinations where Player chooses "Scissors"
+                else if (playerSelection == "Scissors" && computerSelection == "Paper") {
+                    playerScore++;
+                    return "You win! " + playerSelection + " beats " + computerSelection;
+                }
+
+                else if (playerSelection == "Scissors" && computerSelection == "Rock") {
+                    computerScore++;
+                    return "You Lose! " + computerSelection + " beats " + playerSelection;
+                }
+                
+                else if (playerSelection == "Scissors" && computerSelection == "Scissors") {
+                    return "it's a tie! Try again";
+                }
+
+                // All combinations where Player chooses "Paper"
+                else if (playerSelection == "Paper" && computerSelection == "Rock") {
+                    playerScore++;
+                    return "You win! " + playerSelection + " beats " + computerSelection;
+                }
+
+                else if (playerSelection == "Paper" && computerSelection == "Scissors") {
+                    computerScore++;
+                    return "You Lose! " + computerSelection + " beats " + playerSelection;
+                }
+                
+                else if (playerSelection == "Paper" && computerSelection == "Paper") {
+                    return "it's a tie! Try again";
+                }
+            }
+
+            // Game is made up of 5 rounds
+            function game() {
+                for (round = 0; round < 5; round++) {
+                    computerAction = computerPlay();
+                    userAction = playerAction();
+                    str = playRound(userAction, computerAction);
+                    console.log(str);
+                    console.log(playerScore);
+                    console.log(computerScore);
+                }
+                if (playerScore > computerScore) {
+                    return "You win! You got " + playerScore + " points!";
+                }
+                else {
+                    return "You Lose! You got " + playerScore + " points!";
+                }
+            }
+            
         </script>
     </body>
 </html>
