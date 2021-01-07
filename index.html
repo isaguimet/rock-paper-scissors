@@ -6,6 +6,10 @@
     </head>
     <body>
         <script>
+
+            // To run this code selecting “Inspect” or “Inspect Element”. In the ‘Developer Tools’ 
+            // pane find and select the ‘Console’ tab, where you should see the output
+
             let playerScore = 0
             let computerScore = 0;
 
@@ -28,7 +32,7 @@
             // Handles the logic for a single round i.e. which action beats another action
             function playRound(playerSelection, computerSelection) {
 
-                // All combinations where Player chooses "Rock"
+                // Combinations where Player chooses "Rock"
                 if (playerSelection == "Rock" && computerSelection == "Scissors") {
                     playerScore++;
                     return "You win! " + playerSelection + " beats " + computerSelection;
@@ -38,12 +42,8 @@
                     computerScore++;
                     return "You Lose! " + computerSelection + " beats " + playerSelection;
                 }
-                
-                else if (playerSelection == "Rock" && computerSelection == "Rock") {
-                    return "it's a tie! Try again";
-                }
 
-                // All combinations where Player chooses "Scissors"
+                // Combinations where Player chooses "Scissors"
                 else if (playerSelection == "Scissors" && computerSelection == "Paper") {
                     playerScore++;
                     return "You win! " + playerSelection + " beats " + computerSelection;
@@ -53,12 +53,8 @@
                     computerScore++;
                     return "You Lose! " + computerSelection + " beats " + playerSelection;
                 }
-                
-                else if (playerSelection == "Scissors" && computerSelection == "Scissors") {
-                    return "it's a tie! Try again";
-                }
 
-                // All combinations where Player chooses "Paper"
+                // Combinations where Player chooses "Paper"
                 else if (playerSelection == "Paper" && computerSelection == "Rock") {
                     playerScore++;
                     return "You win! " + playerSelection + " beats " + computerSelection;
@@ -69,7 +65,8 @@
                     return "You Lose! " + computerSelection + " beats " + playerSelection;
                 }
                 
-                else if (playerSelection == "Paper" && computerSelection == "Paper") {
+                // Any other combination where the round ends up in a tie
+                else {
                     return "it's a tie! Try again";
                 }
             }
